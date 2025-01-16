@@ -9,7 +9,7 @@ require('dotenv').config();
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var itemRoutes = require('./router/itemroutes');
+var itemRoutes = require('./routes/itemRoutes');
 
 var app = express();
 app.use(express.json());
