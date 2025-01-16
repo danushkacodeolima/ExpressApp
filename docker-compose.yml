@@ -1,0 +1,26 @@
+version: '3.9'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000" # Map port 3000 to the host
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/expenses
+    depends_on:
+      - mongo
+    volumes:
+      - ./app:/usr/src/app
+
+  mongo:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017" # Map MongoDB port to the host
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
